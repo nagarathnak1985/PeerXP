@@ -1,0 +1,9 @@
+.table-scroll
+{
+
+    overflow: scroll;
+}
+.select{ 
+	border: 1px solid #ccc !important;
+    border-radius: 4px
+}
