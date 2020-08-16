@@ -15,8 +15,9 @@
   session_start(); 
   include("functions.php");
   $response = get_tickets_from_zoho();
+  
   $result = json_decode($response);
- // echo "<pre>";print_r($result);die;
+  //echo "<pre>";print_r($result);die;
 ?>
   <table class="table">
     <thead>
@@ -40,6 +41,7 @@
           <td><?php echo $value->subject; ?></td>
           <td><?php echo $value->priority; ?></td>
           <td><?php echo $value->statusType; ?></td>
+          <td><a href="view_ticket.php?id=<?php echo $value->id ; ?>" >View</a></td>
         </tr>
       <?php }?>
     </tbody>
