@@ -29,25 +29,33 @@
                     <h3 class="panel-title">View Ticket status </h3>
                 </div>
                 <div class="panel-body" style="width: 80%;">
+                  <div class="row">
+                            <div class="col-md-3 "><label>Ticket ID  </label></div>
+                            <div class="col-md-8"><b>:</b><?php echo $result->ticketNumber; ?></div>
+                     </div><hr>
                 	   <div class="row">
-                            <div class="col-md-3 "><label>Subject  </label>:</div>
-                            <div class="col-md-8"><?php echo $result->subject; ?></div>
+                            <div class="col-md-3 "><label>Subject  </label></div>
+                            <div class="col-md-8"><b>:</b><?php echo $result->subject; ?></div>
                      </div><hr>
                      <div class="row">
-                          <div class="col-md-3 "><label>Description  </label>:</div>
-                          <div class="col-md-8 "><?php echo $result->description; ?></div>
+                          <div class="col-md-3 "><label>Description  </label></div>
+                          <div class="col-md-8 "><b>:</b><?php echo $result->description; ?></div>
                      </div><hr>
                       <div class="row">
-                          <div class="col-md-3 "><label>Category  </label>:</div>
-                          <div class="col-md-8 "><?php echo $result->category; ?></div>
+                          <div class="col-md-3 "><label>Category  </label></div>
+                          <div class="col-md-8 "><b>:</b><?php echo $result->category; ?></div>
                      </div><hr>
                       <div class="row">
-                          <div class="col-md-3 "><label>Priority  </label>:</div>
-                          <div class="col-md-8 "><?php echo $result->priority; ?></div>
+                          <div class="col-md-3 "><label>Priority  </label></div>
+                          <div class="col-md-8 "><b>:</b><?php echo $result->priority; ?></div>
                      </div><hr>
                       <div class="row">
-                          <div class="col-md-3 "><label>Status  </label>:</div>
-                          <div class="col-md-8 "><?php echo $result->statusType; ?></div>
+                          <div class="col-md-3 "><label>Created Time  </label></div>
+                          <div class="col-md-8 "><b>:</b><?php echo date('Y-m-d H:i:s', strtotime($result->createdTime)); ?></div>
+                     </div><hr>
+                      <div class="row">
+                          <div class="col-md-3 "><label>Status  </label></div>
+                          <div class="col-md-8 "><b>:</b><?php echo $result->statusType; ?></div>
                      </div>
 
                 </div>

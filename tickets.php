@@ -11,15 +11,12 @@
   <!------------->
   <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/toastr.css">
   <script src="js/toastr.js"></script>
-  <script src="js/data-table.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
-
-</head>
+  </head>
 <body >
 <div class="container">
-  <h2>Tickect Management</h2><h4 style="float: right;"><a href="add_ticket.php">Add Tickect</a></h4>
+  <div class="row">
+  <h3>Tickect Management</h3><h4 style="float: right;"><a href="add_ticket.php">Add Tickect</a></h4>
+</div>
 <?php 
   session_start(); 
   include("functions.php");
@@ -40,6 +37,7 @@
         <th>subject</th>
         <th>priority</th>
         <th>Status</th>
+        <th>Action</th>
       </tr>
     </thead>
     <tbody>
@@ -68,9 +66,4 @@
 <?php unset($_SESSION['success']); unset($_SESSION['error']); ?>
 </script>
 </body>
-<script type="text/javascript">
-$(document).ready( function () {
-    $('#myTable').DataTable();
-} );
-</script>
 </html>
