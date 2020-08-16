@@ -7,6 +7,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <!------------->
+  <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/toastr.css">
+  <script src="js/toastr.js"></script>
+  <script src="js/data-table.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+
 </head>
 <body >
 <div class="container">
@@ -15,13 +24,15 @@
   session_start(); 
   include("functions.php");
   $response = get_tickets_from_zoho();
-  
+
   $result = json_decode($response);
   //echo "<pre>";print_r($result);die;
+  
 ?>
-  <table class="table">
+  <table class="table" id="myTable">
     <thead>
       <tr>
+        <th>SNO</th>
         <th>ID</th>
         <th>Ticket number</th>
         <th>DepartmentId</th>
@@ -32,8 +43,9 @@
       </tr>
     </thead>
     <tbody>
-       <?php foreach($result->data as $key=>$value){ ?>
+       <?php $i= 1; foreach($result->data as $key=>$value){  ?>
         <tr>
+          <td><?php echo $i; ?></td>
           <td><?php echo $value->id; ?></td>
           <td><?php echo $value->ticketNumber; ?></td>
           <td><?php echo $value->departmentId; ?></td>
@@ -43,10 +55,22 @@
           <td><?php echo $value->statusType; ?></td>
           <td><a href="view_ticket.php?id=<?php echo $value->id ; ?>" >View</a></td>
         </tr>
-      <?php }?>
+      <?php $i++; }?>
     </tbody>
   </table>
 </div>
+  <script type="text/javascript">
+<?php if(isset($_SESSION['success'])){ ?>
+    toastr.success("<?php echo $_SESSION['success'];?>");
+<?php }else if(isset($_SESSION['error'])){  ?>
+    toastr.error("<?php echo $_SESSION['error']; ?>");
+<?php } ?>
+<?php unset($_SESSION['success']); unset($_SESSION['error']); ?>
+</script>
 </body>
+<script type="text/javascript">
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>
 </html>
-

@@ -27,8 +27,9 @@
                                 <label>Department</label>
                                  <select class="form-control select" name="department" id="department" required>
                                  <option value="">Select Department</option>
-                                 <option value="1">1</option>
-                                 <option value="2">2</option>
+                                 <option value="7189000002187084">7189000002187084</option>
+                                 <option value="7189000001062045">7189000001062045</option>
+                                 <option value="7189000000051431">7189000000051431</option>
                                </select>
                             </div>
 

@@ -9,16 +9,18 @@ if (isset($_POST['login'])) {
 			$_SESSION['email']= $data['email'];
 			$_SESSION['user_id']= $data['id']; 
 			$_SESSION['name']=$data['name'];
+			$_SESSION['success'] = "You are loggedin succesfully.";
 			header("location:tickets.php");
 		}else{
-			header("location:index.php");
+			//$_SESSION['error'] = "Problem in adding Ticket..!";
+			header("location:index.php?error=1");
 		}
 }
 if(isset($_POST['create_ticket'])){
 	require_once('functions.php');
 	$date = date('Y-m-d H:i:s');	
 	$data = array(
-				"departmentId"=> "523116000000006907",
+				"departmentId"=> $_POST['department'],//"523116000000006907",
 				"category" => "general",                   
                 "subject" => $_POST['subject'],
                 "description" =>  $_POST['description'],
@@ -27,16 +29,17 @@ if(isset($_POST['create_ticket'])){
                 "channel" => "Email",                            
                 "phone" => "8892433716",
                 "priority"=> $_POST['priority'],
-                "contactId" =>"523116000000147027", 
+                "contactId" => "7189000002179003",//"523116000000147027", 
                 "status" => "Open"      //ticketNumber          
 	);
 	$resposnse = create_ticket_in_Zoho($data,$_POST['name'] ,$_POST['email']);
 	$resposnse  = json_decode($resposnse );
+	//print_r($resposnse);die;
 	if(isset($resposnse->ticketNumber)){
-		echo $resposnse->ticketNumber." , New ticket has been created successfully. ";
+		$_SESSION['success'] = "Ticket added Successfully";
 		header("location:tickets.php");
 	}else{
-		echo " Problem in creating New ticket ";
+		$_SESSION['error'] = "Problem in adding Ticket..!";
 		header("location:add_ticket.php");
 	}
 
