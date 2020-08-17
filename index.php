@@ -5,7 +5,7 @@
   <script src="js/jquery.js"></script>
   <link rel="stylesheet" href="bootstrap-3.2.0-dist/css/toastr.css">
   <script src="js/toastr.js"></script>
-    <title>Add Products </title>
+    <title>Login </title>
 </head>
 <style>
     .login-panel {

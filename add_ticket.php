@@ -8,7 +8,7 @@
 </head>
 <style>
     .login-panel {
-        margin-top: 50px;
+        margin-top: 20px;
 }
 </style>
 <body>
